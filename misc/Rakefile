@@ -1,5 +1,8 @@
 desc "Creates needed symlinks"
 task :link do
+   `mv -f ~/.gitconfig ~/.gitconfig.old 2>/dev/null`
+   `ln -sf ~/.myconfig/misc/gitconfig ~/.gitconfig`
+
    `mv -f ~/.vimperatorrc ~/.vimperatorrc.old 2>/dev/null`
    `ln -sf ~/.myconfig/misc/vimperatorrc ~/.vimperatorrc`
 end
