@@ -1,0 +1,13 @@
+.netrwhist
+.DS_Store
+*.un~
+*.swp
+*.un~
+
+vim/syntax/*
+vim/spell/*
+vim/record/html5
+vim/indent/html.vim
+vim/autoload/htmlcomplete.vim
+vim/autoload/xml/aria.vim
+vim/autoload/xml/html5.vim

@@ -1,0 +1,235 @@
+" Use pathogen to manage plugins
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+
+set nocompatible
+
+set nonumber
+set ruler
+syntax on
+
+color desertEx
+
+" keep undo history across file saves
+set undofile
+
+" Read last 3 lines of files to look fom vim commands
+set modeline
+set modelines=3
+
+" Set encoding
+set encoding=utf-8
+
+" Status bar
+" set laststatus=2
+
+runtime macros/matchit.vim
+
+" Update and show tag list
+map <Leader>rt :UpdateTags *<CR>
+map <Leader>st :TagbarToggle<CR>
+
+" Do not update tags automatically (hangs on large projects)
+let g:easytags_on_cursorhold=0
+"let g:easytags_always_enabled=1
+
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
+
+" Whitespace stuff
+set nowrap
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
+set expandtab
+set nolist "set list listchars=tab:\ \ ,trail:·
+
+" Expand {<CR> 
+" DelimitMate is supposed to do this but it's not working. Mapping manually:
+" let delimitMate_expand_cr = 1
+imap {<CR> {<CR>}<Esc>O
+imap (<CR> (<CR>)<Esc>O
+imap [<CR> [<CR>]<Esc>O
+
+" Split into 4 windows
+function! SplitFour()
+   vsplit
+   split
+   execute "normal \<c-w>l"
+   split
+   execute "normal \<c-w>h"
+endfunction
+command! S4 call SplitFour()
+cmap s4 S4<CR>
+
+
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Nerd tree 
+map <Leader>n :NERDTreeToggle<CR>
+
+" alt+/ toggles comments:
+map <A-/>  :TComment<cr> 
+imap <A-/> <c-o>:TComment<cr>
+vmap <A-/> :TCommentMaybeInline<cr>
+
+"No bells or flashes
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
+" add json syntax highlighting
+au BufNewFile,BufRead *.json set ft=javascript
+
+" add arduino syntax highlight
+au BufNewFile,BufRead *.pde set ft=arduino
+
+" add RDF syntax highlight for ttl files (used when developing lv2 plugins)
+au BufNewFile,BufRead *.ttl set ft=n3
+
+"Fold using indentation, start with everything unfolded (up to level 100)
+set foldmethod=indent
+set foldlevel=100
+
+" Be tolerant with newline characters for different platforms.
+set fileformats=unix,mac,dos
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+"Use html and js snippets in php files: Commenting out, it messes up ack. :S
+" au BufRead *.php set ft=php.html.javascript
+" au BufNewFile *.php set ft=php.html.javascript
+
+" Enable cakephp snippets
+au FileType php set ft=php.cakephp
+
+" Enable faust syntax for dsp files
+au BufNewFile,BufRead *.dsp set filetype=faust
+
+" Put a colon at the end of the line
+nmap ;; A;<Esc>
+imap ;; <Esc>A;<Esc>
+
+" Put a comma at the end of the line
+nmap ,, A,<Esc>
+imap ,, <Esc>A,<Esc>
+
+" w!! writes a file as sudo
+cmap w!! w !sudo tee >/dev/null %
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
+" Command-t window size
+let g:CommandTMaxHeight=20
+
+" Refresh command-T automatically when files are saved
+augroup CommandTExtension
+   autocmd!
+   autocmd FocusGained * CommandTFlush
+   autocmd BufWritePost * CommandTFlush
+augroup END
+
+
+" Banner command
+autocmd FileType vim map <C-S-b> I"<Del>  <Esc>A  "<Del><Esc>yyp0lv$hhr=yykPjj
+autocmd FileType javascript,php,c,cpp map <C-S-b> I//  <Esc>A  //<Esc>yyp0llv$hhhr=yykPjj
+autocmd FileType python,ruby,sh,zsh map <C-S-b> I#  <Esc>A  #<Esc>yyp0lv$hhr=yykPjj
+autocmd FileType css map <C-S-b> I/*  <Esc>A  */<Esc>yyp0llv$r=$hc$*/<Esc>yykPjj
+
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Enable syntastic syntax checking
+let g:syntastic_enable_signs=1
+let g:syntastic_quiet_warnings=1
+
+" markdown files need 4 spaces for indent size
+autocmd BufRead,BufNewFile *.markdown,*.md setlocal sw=4 sts=4 et
+
+" coffee files need 2 spaces for indent size
+autocmd BufRead,BufNewFile *.coffee setlocal sw=2 sts=2 et
+
+" Bindings for php debugger
+" map <F11> :DbgStepInto<CR>
+" map <F10> :DbgStepOver<CR>
+" map <S-F11> :DbgStepOut<CR>
+" map <F5> :DbgRun<CR>
+" map <S-F5> :DbgDetach<CR>
+" map <F8> :DbgToggleBreakpoint<CR>
+
+" Generates Wordpress-friendly html from a markdown file
+" TODO: Fix this, take a look at Hammer plugin, might be useful
+function! Markdown2wp()
+   !markdown % > /tmp/wp.html
+   tabedit /tmp/wp.html
+   %s@<pre><code>@[cc lang="c" escaped="true"]@g
+   %s@</code></pre>@[/cc]@eg
+   "silent s/\t/\&#9;/eg
+endfunction
+
+" Runs several lines in a terminal
+function! RunCommands()
+   echo system(getline('.'))
+endfunction
+command -range RunCommands <line1>,<line2>call RunCommands()
+vmap ,r :RunCommands<CR>
+
+" Ctrl+Shift+h makes json files pretty
+" au FileType json map <C-S-h> :%!json_xs -f json -t json-pretty<CR>
+
+" XML prettify
+" function! DoPrettyXML()
+"   " save the filetype so we can restore it later
+"   let l:origft = &ft
+"   set ft= 
+"   " delete the xml header if it exists. This will
+"   " permit us to surround the document with fake tags
+"   " without creating invalid xml.
+"   1s/<?xml .*?>//e
+"   " insert fake tags around the entire document.
+"   " This will permit us to pretty-format excerpts of
+"   " XML that may contain multiple top-level elements.
+"   0put ='<PrettyXML>'
+"   $put ='</PrettyXML>'
+"   silent %!xmllint --format -
+"   " xmllint will insert an <?xml?> header. it's easy enough to delete
+"   " if you don't want it.
+"   " delete the fake tags
+"   2d
+"   $d
+"   " restore the 'normal' indentation, which is one extra level
+"   " too deep due to the extra tags we wrapped around the document.
+"   silent %<
+"   " back to home
+"   1
+"   " restore the filetype
+"   exe "set ft=" . l:origft
+" endfunction
+" command! PrettyXML call DoPrettyXML()
+" 
+" " Ctrl+Shift+h Makes xml files pretty.
+" au FileType xml map <C-S-h> :PrettyXML<CR>
+
+
+
+
+" vim_plugin_task "jquery" do
+"   sh "curl http://www.vim.org/scripts/download_script.php?src_id=15752 > syntax/jquery.vim"
+" end
+" 
+" vim_plugin_task "vim-snippets-jquery" do
+"   sh "curl http://gitorious.org/dziq-configs/dziq-configs/archive-tarball/master > tmp/vim-snippets-jquery.tar.gz"
+"   sh "tar -C tmp -zxvf tmp/vim-snippets-jquery.tar.gz"
+"   sh "rm -rf snippets/javascript-jquery/"
+"   sh "mv tmp/dziq-configs-dziq-configs/.vim/snippets/javascript-jquery snippets/"
+"   sh "rm -rf tmp/dziq-configs-dziq-configs"
+"   sh "rm -rf tmp/dziq-configs-dziq-configs.tar.gz"
+" end

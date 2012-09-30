@@ -1,0 +1,46 @@
+desc "Creates needed symlinks"
+task :link do
+   `mv -f ~/.gvimrc ~/.gvimrc.old`
+   `mv -f ~/.vimrc ~/.vimrc.old`
+   `mv -f ~/.vim ~/.vim.old`
+   `ln -sf ~/.myconfig/vim/gvimrc ~/.gvimrc`
+   `ln -sf ~/.myconfig/vim/vimrc ~/.vimrc`    
+   `ln -sf ~/.myconfig/vim ~/.vim`    
+end
+
+desc "Update the documentation"
+task :update_docs do
+   sh "vim -c 'call pathogen#helptags()|q'"
+end
+
+desc "Install All plugins"
+task :install do
+   uname = `uname`.strip
+   if uname == "Linux"
+      sh "sudo apt-get install git ruby1.8 rake vim-gnome"
+   else
+      sh "brew install git macvim"
+   end
+
+   # All the plugins installed as git submodules
+   sh "cd ../ && git submodule init"
+   sh "cd ../ && git submodule update"
+
+   # Cake PHP Snippets
+   sh "curl https://raw.github.com/inkedmn/vim-snippets-cakephp/master/cakephp.snippets > ~/.myconfig/vim/bundle/snipmate-snippets/snippets/cakephp.snippets"
+
+   # Command -T
+   sh "cd ~/.myconfig/vim/bundle/command-t && rake make"
+
+   # Syntax for RDF Files
+   sh "mkdir -p syntax"
+   sh "curl http://www.vim.org/scripts/download_script.php?src_id=6882 > syntax/n3.vim"
+
+   # html5 plugin doesn't like pathogen
+   sh "cd bundle/html5; make install;"
+
+   puts "\n\n* * * * * * * * * * * * * * * * * * *"
+   puts "* Now run rake update_docs here and *"
+   puts "* :Helptags in vim                  *"
+   puts "* * * * * * * * * * * * * * * * * * *\n\n"
+end
