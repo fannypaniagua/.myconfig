@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="close_window" mtime="1338586337" type="string">
+		<stringvalue>&lt;Primary&gt;&lt;Shift&gt;w</stringvalue>
+	</entry>
+	<entry name="close_tab" mtime="1338586331" type="string">
+		<stringvalue>&lt;Primary&gt;w</stringvalue>
+	</entry>
+	<entry name="new_window" mtime="1338586327" type="string">
+		<stringvalue>&lt;Primary&gt;n</stringvalue>
+	</entry>
+	<entry name="new_tab" mtime="1338586325" type="string">
+		<stringvalue>&lt;Primary&gt;t</stringvalue>
+	</entry>
+	<entry name="paste" mtime="1337629581" type="string">
+		<stringvalue>&lt;Primary&gt;v</stringvalue>
+	</entry>
+	<entry name="copy" mtime="1337629578" type="string">
+		<stringvalue>&lt;Primary&gt;c</stringvalue>
+	</entry>
+</gconf>

@@ -1,0 +1,5 @@
+desc "Creates needed symlinks"
+task :link do
+   `mv -f ~/.gconf/apps/gnome-terminal  ~/.gconf/apps/gnome-terminal.old 2>/dev/null`
+   `ln -sf ~/.myconfig/gnome-terminal  ~/.gconf/apps/gnome-terminal`
+end
