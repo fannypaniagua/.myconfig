@@ -2,6 +2,9 @@
 	name = Rafael Vega
 	email = email.rafa@gmail.com
 
+[credential]
+	helper = cache --timeout=3600
+
 [color]
    branch = auto
    diff = auto
@@ -22,5 +25,4 @@
    added = yellow
    changed = green
    untracked = cyan
-[credential]
-	helper = cache --timeout=3600
+

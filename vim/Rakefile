@@ -17,9 +17,9 @@ desc "Install All plugins"
 task :install do
    uname = `uname`.strip
    if uname == "Linux"
-      sh "sudo apt-get install git ruby1.8 rake vim-gnome"
+      `sudo apt-get install git ruby1.8 rake vim-gnome`
    else
-      sh "brew install git macvim"
+      `brew install git macvim`
    end
 
    # All the plugins installed as git submodules
