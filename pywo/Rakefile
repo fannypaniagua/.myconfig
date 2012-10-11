@@ -1,0 +1,8 @@
+desc "Install dependencies"
+task 'install' do
+   uname = `uname`.strip
+   if uname == "Linux"
+      `sudo apt-get install python-xlib`
+      puts "*** You should run pywo.py at login ***"
+   end
+end
