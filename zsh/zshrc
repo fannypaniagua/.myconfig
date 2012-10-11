@@ -65,8 +65,8 @@ else
    alias gitg=gitx
 fi
 
-# Use vim for everything
-export EDITOR=vim
+# Use gvim for everything
+export EDITOR=gvim
 
 # Ruby versions
 export PATH="$HOME/.rbenv/bin:$PATH"
