@@ -1,0 +1,5 @@
+desc "Creates needed symlinks"
+task :link do
+   `mv -f ~/.vifm ~/.vifm.old 2>/dev/null`
+   `ln -sf ~/.myconfig/vifm ~/.vifm`
+end
