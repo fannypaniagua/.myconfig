@@ -78,6 +78,9 @@ export NUMCPUS=4
 export MAKEFLAGS="-j$((NUMCPUS*2)) --load-average=$((NUMCPUS*2))"
 
 alias rake='noglob rake'
+alias vifm='vifm .'
+
+alias glg='git log --graph --oneline --decorate'
 
 # Vaca 
 # ~/Scripts/cow.sh
