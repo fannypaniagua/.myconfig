@@ -1,3 +1,20 @@
+desc "Install vifm"
+task :install do
+   uname = `uname`.strip
+   if uname == "Linux"
+      `sudo apt-get install libncursesw5-dev`
+      `wget -c http://prdownloads.sourceforge.net/vifm/vifm-0.7.3a.tar.bz2?download -O vifm.tar.bz2`
+      `mkdir src`
+      `tar -xvjf vifm.tar.bz2 -C src --strip-components=1`
+      `cd src && ./configure && make && sudo make install`
+      # `rm vifm.tar.bz2`
+      # `rm -rf src`
+   else
+      `brew update`
+      `brew install vifm`
+   end
+end
+
 desc "Creates needed symlinks"
 task :link do
    `mv -f ~/.vifm ~/.vifm.old 2>/dev/null`
