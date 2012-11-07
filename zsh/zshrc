@@ -80,7 +80,7 @@ export MAKEFLAGS="-j$((NUMCPUS*2)) --load-average=$((NUMCPUS*2))"
 alias rake='noglob rake'
 alias vifm='vifm .'
 
-alias glg='git log --graph --oneline --decorate'
+alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 
 # Vaca 
 # ~/Scripts/cow.sh
