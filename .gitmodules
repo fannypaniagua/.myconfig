@@ -115,3 +115,9 @@
 [submodule "vim/bundle/vim-stylus"]
 	path = vim/bundle/vim-stylus
 	url = https://github.com/vim-scripts/vim-stylus.git
+[submodule "vim/bundle/CSAprox"]
+	path = vim/bundle/CSAprox
+	url = https://github.com/vim-scripts/CSApprox.git
+[submodule "vim/bundle/guicolorscheme.vim"]
+	path = vim/bundle/guicolorscheme.vim
+	url = https://github.com/vim-scripts/guicolorscheme.vim.git

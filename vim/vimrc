@@ -1,14 +1,28 @@
+" Detect OS
+let os = substitute(system('uname'), "\n", "", "")
+if os == "Linux"
+   " Linux Stuff
+elseif od == "Darwin"
+   " Mac os Stuff
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Use pathogen to manage plugins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
 set nocompatible
-
 set nonumber
 set ruler
 syntax on
 
-color desertEx
+" Colors
+set t_Co=256
+let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+colorscheme desertEx
 
 " keep undo history across file saves
 set undofile
@@ -25,10 +39,6 @@ set encoding=utf-8
 
 runtime macros/matchit.vim
 
-" Update and show tag list
-map <Leader>rt :UpdateTags *<CR>
-map <Leader>st :TagbarToggle<CR>
-
 " Do not update tags automatically (hangs on large projects)
 let g:easytags_on_cursorhold=0
 "let g:easytags_always_enabled=1
@@ -44,52 +54,15 @@ set softtabstop=3
 set expandtab
 set nolist "set list listchars=tab:\ \ ,trail:·
 
-" Expand {<CR> 
-" DelimitMate is supposed to do this but it's not working. Mapping manually:
-" let delimitMate_expand_cr = 1
-imap {<CR> {<CR>}<Esc>O
-imap (<CR> (<CR>)<Esc>O
-imap [<CR> [<CR>]<Esc>O
-
-" Split into 4 windows
-function! SplitFour()
-   vsplit
-   split
-   execute "normal \<c-w>l"
-   split
-   execute "normal \<c-w>h"
-endfunction
-command! S4 call SplitFour()
-cmap s4 S4<CR>
-
-
-
 " Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" Nerd tree 
-map <Leader>n :NERDTreeToggle<CR>
-
-" alt+/ toggles comments:
-map <A-/>  :TComment<cr> 
-imap <A-/> <c-o>:TComment<cr>
-vmap <A-/> :TCommentMaybeInline<cr>
-
 "No bells or flashes
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" add json syntax highlighting
-au BufNewFile,BufRead *.json set ft=javascript
-
-" add arduino syntax highlight
-au BufNewFile,BufRead *.pde set ft=arduino
-
-" add RDF syntax highlight for ttl files (used when developing lv2 plugins)
-au BufNewFile,BufRead *.ttl set ft=n3
 
 "Fold using indentation, start with everything unfolded (up to level 100)
 set foldmethod=indent
@@ -100,27 +73,6 @@ set fileformats=unix,mac,dos
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-
-"Use html and js snippets in php files: Commenting out, it messes up ack. :S
-" au BufRead *.php set ft=php.html.javascript
-" au BufNewFile *.php set ft=php.html.javascript
-
-" Enable cakephp snippets
-au FileType php set ft=php.cakephp
-
-" Enable faust syntax for dsp files
-au BufNewFile,BufRead *.dsp set filetype=faust
-
-" Put a colon at the end of the line
-nmap ;; A;<Esc>
-imap ;; <Esc>A;<Esc>
-
-" Put a comma at the end of the line
-nmap ,, A,<Esc>
-imap ,, <Esc>A,<Esc>
-
-" w!! writes a file as sudo
-cmap w!! w !sudo tee >/dev/null %
 
 " Tab completion
 set wildmode=list:longest,list:full
@@ -136,20 +88,93 @@ augroup CommandTExtension
    autocmd BufWritePost * CommandTFlush
 augroup END
 
-
-" Banner command
-autocmd FileType vim map <C-S-b> I"<Del>  <Esc>A  "<Del><Esc>yyp0lv$hhr=yykPjj
-autocmd FileType javascript,php,c,cpp map <C-S-b> I//  <Esc>A  //<Esc>yyp0llv$hhhr=yykPjj
-autocmd FileType python,ruby,sh,zsh map <C-S-b> I#  <Esc>A  #<Esc>yyp0lv$hhr=yykPjj
-autocmd FileType css map <C-S-b> I/*  <Esc>A  */<Esc>yyp0llv$r=$hc$*/<Esc>yykPjj
-
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Key mappings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+" Use jk instead of <esc>
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+
+" Use comma as the leader key
+let mapleader=","
+
+" Leader F for Ack
+map <Leader>f :Ack<space>-ai<space>
+
+" Update and show tag list
+map <Leader>rt :UpdateTags *<CR>
+map <Leader>st :TagbarToggle<CR>
+
+" Jump to companion file (*.cpp to *.hpp and so on)
+map <Leader>Up :FSHere<CR>
+
+" Open markup previews in chromium
+let g:HammerBrowser = 'google-chrome'
+
+" Leader z for undo history
+map <Leader>z :GundoToggle<CR>
+
+" Nerd tree 
+map <Leader>n :NERDTreeToggle<CR>
+
+" w!! writes a file as sudo
+cmap w!! w !sudo tee >/dev/null %
+
+" Ctrl+v is normally visual block mode, change to Leader+v
+noremap <Leader>v <C-v>
+
+" Resize windows
+map ) <C-W>>
+map ( <C-W><
+map + <C-W>+
+map _ <C-W>-
+
+" Switch Windows
+map <Leader>h <C-w>h
+map <Leader>j <C-w>j
+map <Leader>k <C-w>k
+map <Leader>l <C-w>l
+
+" <Leader>+/ toggles comments:
+map <Leader>/ :TComment<cr> 
+imap <Leader>/ <c-o>:TComment<cr>
+vmap <Leader>/ :TCommentMaybeInline<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Filetypes
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" add json syntax highlighting
+au BufNewFile,BufRead *.json set ft=javascript
+
+" add arduino syntax highlight
+au BufNewFile,BufRead *.pde set ft=arduino
+
+" add RDF syntax highlight for ttl files (used when developing lv2 plugins)
+au BufNewFile,BufRead *.ttl set ft=n3
+
+"Use html and js snippets in php files: Commenting out, it messes up ack. :S
+" au BufRead *.php set ft=php.html.javascript
+" au BufNewFile *.php set ft=php.html.javascript
+
+" Enable cakephp snippets
+au FileType php set ft=php.cakephp
+
+" Enable faust syntax for dsp files
+au BufNewFile,BufRead *.dsp set filetype=faust
 
 " markdown files need 4 spaces for indent size
 autocmd BufRead,BufNewFile *.markdown,*.md setlocal sw=4 sts=4 et
@@ -157,13 +182,53 @@ autocmd BufRead,BufNewFile *.markdown,*.md setlocal sw=4 sts=4 et
 " coffee files need 2 spaces for indent size
 autocmd BufRead,BufNewFile *.coffee setlocal sw=2 sts=2 et
 
-" Bindings for php debugger
-" map <F11> :DbgStepInto<CR>
-" map <F10> :DbgStepOver<CR>
-" map <S-F11> :DbgStepOut<CR>
-" map <F5> :DbgRun<CR>
-" map <S-F5> :DbgDetach<CR>
-" map <F8> :DbgToggleBreakpoint<CR>
+
+
+
+
+
+
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" functions, etc. 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Put a colon at the end of the line
+nmap ;; A;<Esc>
+imap ;; <Esc>A;<Esc>
+
+" Put a comma at the end of the line
+nmap ,, A,<Esc>
+imap ,, <Esc>A,<Esc>
+
+" Expand {<CR> 
+" DelimitMate is supposed to do this but it's not working. Mapping manually:
+" let delimitMate_expand_cr = 1
+imap {<CR> {<CR>}<Esc>O
+imap (<CR> (<CR>)<Esc>O
+imap [<CR> [<CR>]<Esc>O
+
+" Opens an edit command with the path of the currently edited file filled in
+" Normal mode: <Leader>e
+map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+
+" Split into 4 windows
+function! SplitFour()
+   vsplit
+   split
+   execute "normal \<c-w>l"
+   split
+   execute "normal \<c-w>h"
+endfunction
+command! S4 call SplitFour()
+cmap s4 S4<CR>
+
+" Creates a banner with comments
+autocmd FileType vim map <Leader>b I"<Del>  <Esc>A  "<Del><Esc>yyp0lv$hhr=yykPjj
+autocmd FileType javascript,php,c,cpp map <Leader>b I//  <Esc>A  //<Esc>yyp0llv$hhhr=yykPjj
+autocmd FileType python,ruby,sh,zsh map <Leader>b I#  <Esc>A  #<Esc>yyp0lv$hhr=yykPjj
+autocmd FileType css map <Leader>b I/*  <Esc>A  */<Esc>yyp0llv$r=$hc$*/<Esc>yykPjj
 
 " Generates Wordpress-friendly html from a markdown file
 " TODO: Fix this, take a look at Hammer plugin, might be useful
@@ -180,7 +245,7 @@ function! RunCommands()
    echo system(getline('.'))
 endfunction
 command -range RunCommands <line1>,<line2>call RunCommands()
-vmap ,r :RunCommands<CR>
+vmap <Leader>r :RunCommands<CR>
 
 " Ctrl+Shift+h makes json files pretty
 " au FileType json map <C-S-h> :%!json_xs -f json -t json-pretty<CR>
@@ -218,18 +283,3 @@ vmap ,r :RunCommands<CR>
 " " Ctrl+Shift+h Makes xml files pretty.
 " au FileType xml map <C-S-h> :PrettyXML<CR>
 
-
-
-
-" vim_plugin_task "jquery" do
-"   sh "curl http://www.vim.org/scripts/download_script.php?src_id=15752 > syntax/jquery.vim"
-" end
-" 
-" vim_plugin_task "vim-snippets-jquery" do
-"   sh "curl http://gitorious.org/dziq-configs/dziq-configs/archive-tarball/master > tmp/vim-snippets-jquery.tar.gz"
-"   sh "tar -C tmp -zxvf tmp/vim-snippets-jquery.tar.gz"
-"   sh "rm -rf snippets/javascript-jquery/"
-"   sh "mv tmp/dziq-configs-dziq-configs/.vim/snippets/javascript-jquery snippets/"
-"   sh "rm -rf tmp/dziq-configs-dziq-configs"
-"   sh "rm -rf tmp/dziq-configs-dziq-configs.tar.gz"
-" end

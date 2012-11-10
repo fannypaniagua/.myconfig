@@ -20,9 +20,6 @@ if has("gui_gtk2")
    map <C-v> "+gP
    cmap <C-v> <C-r>*
 
-   " Ctrl+v is normally visual block mode, change to Alt+v
-   noremap <A-v> <C-v>
-
    " Ctrl + x for cut
    imap <C-x> <Esc>"+x
    map <C-x> "+x
@@ -30,34 +27,10 @@ if has("gui_gtk2")
    " Close file
    " map <C-w> :q<CR>
 
-   " Control-Shift-F for Ack
-   map <C-F> :Ack<space>-ai<space>
-
-   " Switch Windows
-   map <C-h> <C-w>h
-   map <C-j> <C-w>j
-   map <C-k> <C-w>k
-   map <C-l> <C-w>l
-
-   
-   " Jump to companion file (*.cpp to *.hpp and so on)
-   map <C-S-Up> :FSHere<CR>
-
-   " Open markup previews in chromium
-   let g:HammerBrowser = 'google-chrome'
-
-   map <C-z> :GundoToggle<CR>
-
    " New tab
    map <C-T> :tabnew<CR>
 
-   " Resize windows
-   map <A-Right> <C-W>>
-   map <A-Left> <C-W><
-   map <A-Up> <C-W>+
-   map <A-Down> <C-W>-
-
-   " Functions to Rearrange tabr
+   " Functions to Rearrange tabs
    function! TabLeft()
        let tab_number = tabpagenr() - 1
        if tab_number == 0
@@ -84,28 +57,5 @@ endif
 
 
 if has("gui_macvim")
-   " Control-Shift-F for Ack
-   map <D-F> :Ack<space>-ai<space>
-
-   " alt+/ toggles comments:
-   map ÷ :TComment<cr> 
-   imap ÷ <c-o>:TComment<cr>
-   vmap ÷ :TCommentMaybeInline<cr>
-
-   " Jump to companion file (*.cpp to *.hpp and so on)
-   map <D-S-Up> :FSHere<CR>
-   
-   " Switch windows
-   " macmenu &MacVim.Hide\ MacVim key=<nop> " This unmap won't work, go to system preferences and bind Hide MacVim to something else.
-   map <D-h> <C-w>h
-   map <D-j> <C-w>j
-   map <D-k> <C-w>k
-   macmenu &Tools.List\ Errors key=<nop>
-   map <D-l> <C-w>l
-   
-   " Resize windows
-   map <A-Right> <C-W>>
-   map <A-Left> <C-W><
-   map <A-Up> <C-W>+
-   map <A-Down> <C-W>-
+   " MacVim stuff
 endif
