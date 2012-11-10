@@ -109,18 +109,12 @@
 [submodule "vim/bundle/vim-brunch"]
 	path = vim/bundle/vim-brunch
 	url = https://github.com/drichard/vim-brunch.git
-[submodule "vim/bundle/Color-Sampler-Pack"]
-	path = vim/bundle/Color-Sampler-Pack
-	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
 [submodule "vim/bundle/vim-stylus"]
 	path = vim/bundle/vim-stylus
 	url = https://github.com/vim-scripts/vim-stylus.git
 [submodule "vim/bundle/CSAprox"]
 	path = vim/bundle/CSAprox
 	url = https://github.com/vim-scripts/CSApprox.git
-[submodule "vim/bundle/guicolorscheme.vim"]
-	path = vim/bundle/guicolorscheme.vim
-	url = https://github.com/vim-scripts/guicolorscheme.vim.git
 [submodule "vim/bundle/vimcolorschemes.vim"]
 	path = vim/bundle/vimcolorschemes.vim
 	url = https://github.com/flazz/vim-colorschemes
