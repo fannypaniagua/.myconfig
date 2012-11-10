@@ -121,3 +121,6 @@
 [submodule "vim/bundle/guicolorscheme.vim"]
 	path = vim/bundle/guicolorscheme.vim
 	url = https://github.com/vim-scripts/guicolorscheme.vim.git
+[submodule "vim/bundle/vimcolorschemes.vim"]
+	path = vim/bundle/vimcolorschemes.vim
+	url = https://github.com/flazz/vim-colorschemes
