@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="default_profile" mtime="1335921779" type="string">
+	<entry name="default_profile" mtime="1352563880" type="string">
 		<stringvalue>Profile0</stringvalue>
 	</entry>
-	<entry name="profile_list" mtime="1335921727" type="list" ltype="string">
+	<entry name="profile_list" mtime="1352563796" type="list" ltype="string">
 		<li type="string">
 			<stringvalue>Default</stringvalue>
 		</li>
