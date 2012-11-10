@@ -7,8 +7,8 @@ task :install do
       `mkdir src`
       `tar -xvjf vifm.tar.bz2 -C src --strip-components=1`
       `cd src && ./configure && make && sudo make install`
-      # `rm vifm.tar.bz2`
-      # `rm -rf src`
+      `rm vifm.tar.bz2`
+      `rm -rf src`
    else
       `brew update`
       `brew install vifm`

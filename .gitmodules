@@ -112,3 +112,6 @@
 [submodule "vim/bundle/Color-Sampler-Pack"]
 	path = vim/bundle/Color-Sampler-Pack
 	url = https://github.com/vim-scripts/Color-Sampler-Pack.git
+[submodule "vim/bundle/vim-stylus"]
+	path = vim/bundle/vim-stylus
+	url = https://github.com/vim-scripts/vim-stylus.git
