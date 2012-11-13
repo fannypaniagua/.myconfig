@@ -1,0 +1,5 @@
+desc "Creates needed symlinks"
+task :link do
+   `mv -f ~/.tmux.conf ~/.tmux.conf.old 2>/dev/null`
+   `ln -sf ~/.myconfig/tmux/tmux.conf ~/.tmux.conf`
+end
