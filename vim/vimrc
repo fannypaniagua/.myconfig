@@ -2,7 +2,7 @@
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
    " Linux Stuff
-elseif od == "Darwin"
+elseif os == "Darwin"
    " Mac os Stuff
 endif
 
