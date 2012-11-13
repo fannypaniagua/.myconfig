@@ -19,7 +19,7 @@ task :install do
    if uname == "Linux"
       `sudo apt-get install git ruby1.8 rake vim-gnome`
    else
-      `brew install git macvim`
+      `brew install git macvim vim mercurial vim`
    end
 
    # All the plugins installed as git submodules
