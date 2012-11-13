@@ -1,15 +1,14 @@
 " Detect OS
 let os = substitute(system('uname'), "\n", "", "")
-if os == "Linux"
-   " Linux Stuff
-elseif os == "Darwin"
-   " Mac os Stuff
-endif
+" if os == "Linux"
+"    " Linux Stuff
+" elseif os == "Darwin"
+"    " Mac os Stuff
+" endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Use pathogen to manage plugins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
@@ -56,7 +55,6 @@ set shiftwidth=3
 set softtabstop=3
 set expandtab
 set nolist "set list listchars=tab:\ \ ,trail:·
-
 " Searching
 set hlsearch
 set incsearch
@@ -95,10 +93,16 @@ augroup END
 let g:syntastic_enable_signs=1
 let g:syntastic_quiet_warnings=1
 
-
-
-
-
+" Mac specific stuff
+if os == "Darwin"
+   if exists('$TMUX')
+      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+   else
+      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+   endif
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
