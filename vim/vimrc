@@ -108,8 +108,16 @@ let g:syntastic_quiet_warnings=1
 
 " Use jk instead of <esc>
 inoremap jk <esc>
+inoremap kj <esc>
 inoremap <esc> <nop>
 
+" Yanking also copies to system clipboard
+vnoremap y ygv"+y
+nnoremap yy yy"+yy
+
+" Deleting also copies to system clipboard
+vnoremap d "+ygvd
+nnoremap dd "+yydd
 
 " Use comma as the leader key
 let mapleader=","
@@ -204,7 +212,6 @@ imap ;; <Esc>A;<Esc>
 " Put a comma at the end of the line
 nmap ,, A,<Esc>
 imap ,, <Esc>A,<Esc>
-
 " Expand {<CR> 
 " DelimitMate is supposed to do this but it's not working. Mapping manually:
 " let delimitMate_expand_cr = 1
