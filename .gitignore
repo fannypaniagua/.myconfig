@@ -13,3 +13,4 @@ vim/autoload/xml/aria.vim
 vim/autoload/xml/html5.vim
 
 vifm/vifminfo
+vifm/Trash
