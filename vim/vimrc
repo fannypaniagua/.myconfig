@@ -18,6 +18,9 @@ set nonumber
 set ruler
 syntax on
 
+" Timeout for multi-key mapping
+set timeoutlen=200
+
 " Don't let internal command output go to containing terminal
 set shellpipe=&>
 
@@ -111,6 +114,12 @@ endif
 
 
 " Use jk instead of <esc>
+vnoremap jk <esc>
+vnoremap kj <esc>
+vnoremap <esc> <nop>
+cnoremap jk <esc>
+cnoremap kj <esc>
+cnoremap <esc> <nop>
 inoremap jk <esc>
 inoremap kj <esc>
 inoremap <esc> <nop>
