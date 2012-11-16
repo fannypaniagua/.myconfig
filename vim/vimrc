@@ -121,14 +121,14 @@ endif
 
 
 " Use jk instead of <esc>
-vnoremap jk <esc>
-vnoremap kj <esc>
+vnoremap df <esc>
+vnoremap fd <esc>
 vnoremap <esc> <nop>
-cnoremap jk <esc>
-cnoremap kj <esc>
+cnoremap df <esc>
+cnoremap fd <esc>
 cnoremap <esc> <nop>
-inoremap jk <esc>
-inoremap kj <esc>
+inoremap df <esc>
+inoremap fd <esc>
 inoremap <esc> <nop>
 
 " Yanking also copies to system clipboard
@@ -226,18 +226,19 @@ autocmd BufRead,BufNewFile *.coffee setlocal sw=2 sts=2 et
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Put a colon at the end of the line
-nmap ;; A;<Esc>
-imap ;; <Esc>A;<Esc>
+nmap ;; A;<esc>
+imap ;; <esc>A;<esc>
 
 " Put a comma at the end of the line
-nmap ,, A,<Esc>
-imap ,, <Esc>A,<Esc>
+nmap ,, A,<esc>
+imap ,, <esc>A,<esc>
+
 " Expand {<CR> 
 " DelimitMate is supposed to do this but it's not working. Mapping manually:
 " let delimitMate_expand_cr = 1
-imap {<CR> {<CR>}<Esc>O
-imap (<CR> (<CR>)<Esc>O
-imap [<CR> [<CR>]<Esc>O
+imap {<CR> {<CR>}<esc>O
+imap (<CR> (<CR>)<esc>O
+imap [<CR> [<CR>]<esc>O
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
@@ -255,10 +256,10 @@ command! S4 call SplitFour()
 cmap s4 S4<CR>
 
 " Creates a banner with comments
-autocmd FileType vim map <Leader>b I"<Del>  <Esc>A  "<Del><Esc>yyp0lv$hhr=yykPjj
-autocmd FileType javascript,php,c,cpp map <Leader>b I//  <Esc>A  //<Esc>yyp0llv$hhhr=yykPjj
-autocmd FileType python,ruby,sh,zsh map <Leader>b I#  <Esc>A  #<Esc>yyp0lv$hhr=yykPjj
-autocmd FileType css map <Leader>b I/*  <Esc>A  */<Esc>yyp0llv$r=$hc$*/<Esc>yykPjj
+autocmd FileType vim map <Leader>b I"<Del>  <esc>A  "<Del><esc>yyp0lv$hhr=yykPjj
+autocmd FileType javascript,php,c,cpp map <Leader>b I//  <esc>A  //<esc>yyp0llv$hhhr=yykPjj
+autocmd FileType python,ruby,sh,zsh map <Leader>b I#  <esc>A  #<esc>yyp0lv$hhr=yykPjj
+autocmd FileType css map <Leader>b I/*  <esc>A  */<esc>yyp0llv$r=$hc$*/<esc>yykPjj
 
 " Generates Wordpress-friendly html from a markdown file
 " TODO: Fix this, take a look at Hammer plugin, might be useful
