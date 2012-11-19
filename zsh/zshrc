@@ -49,8 +49,8 @@ if [[ `uname` == "Linux" ]]; then
    # Alias for gnome-open
    alias open='/usr/bin/gnome-open'
 
-   # Gvim open on same window, new tab
-   alias gvim='/home/rafaelvega/Scripts/open-vim-new-tab.sh'
+   # Gvim open on same window
+   alias vim='~/.myconfig/vim/open-with-vim.sh' 
 
 
 # MacOS:
