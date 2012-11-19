@@ -114,15 +114,15 @@ endif
 
 
 " Use jk instead of <esc>
-vnoremap jk <esc>
-vnoremap kj <esc>
-vnoremap <esc> <nop>
-cnoremap jk <esc>
-cnoremap kj <esc>
-cnoremap <esc> <nop>
-inoremap jk <esc>
-inoremap kj <esc>
-inoremap <esc> <nop>
+" vnoremap jk <esc>
+" vnoremap kj <esc>
+" vnoremap <esc> <nop>
+" cnoremap jk <esc>
+" cnoremap kj <esc>
+" cnoremap <esc> <nop>
+" inoremap jk <esc>
+" inoremap kj <esc>
+" inoremap <esc> <nop>
 
 " Yanking also copies to system clipboard
 vnoremap y ygv"+y
