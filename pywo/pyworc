@@ -18,15 +18,15 @@ ignore_actions = grid_height, float, expand, shrink, put, switch, cycle
 
 [KEYS]
 ; section/point-name =  key
-top-left = u
-top = i
-top-right = o
-left = j
-middle = k
-right = l
-bottom-right = >
-bottom = <
-bottom-left = m
+top-left = 7
+top = 8
+top-right = 9
+left = u
+middle = i
+right = o
+bottom-left = j
+bottom-right = l
+bottom = k
 
 switch = Alt-KP_Divide
 cycle = Alt-Shift-KP_Divide

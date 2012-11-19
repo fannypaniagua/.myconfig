@@ -25,20 +25,19 @@ s0_border_color = #0000009f
 s0_fill_color = #00000019
 
 [core]
-s0_active_plugins = core;composite;opengl;compiztoolbox;decor;imgpng;gnomecompat;place;grid;snap;move;regex;mousepoll;resize;commands;vpswitch;session;animation;wall;workarounds;expo;ezoom;staticswitcher;fade;scale;unityshell;
+s0_active_plugins = core;composite;opengl;compiztoolbox;decor;imgpng;gnomecompat;place;snap;move;regex;mousepoll;resize;commands;vpswitch;session;animation;wall;workarounds;expo;ezoom;staticswitcher;fade;scale;unityshell;
 s0_close_window_key = <Shift><Control><Primary>w
 s0_minimize_window_key = <Control><Primary>m
 s0_toggle_window_maximized_key = <Shift><Control><Primary>m
 
 [unityshell]
 s0_launcher_hide_mode = 1
-s0_reveal_trigger = 1
 s0_show_launcher = <Super>space
 s0_alt_tab_prev = Disabled
 s0_alt_tab_forward_all = Disabled
 s0_alt_tab_prev_all = Disabled
 s0_icon_size = 32
-s0_edge_responsiveness = 0.200000
+s0_edge_responsiveness = 8.000000
 s0_num_launchers = 1
 
 [decor]
