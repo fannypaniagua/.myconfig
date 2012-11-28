@@ -1,8 +1,19 @@
-#!/bin/bash
+#!/bin/zsh
 
+unamestr=`uname`
+# Mac OS
+# if [[ "$unamestr" == 'Darwin' ]]; then
+#    if [ $# != 0 ]; then
+#       exec mvim -v --servername VIM_RVG --remote-silent "$@"
+#    else 
+#       exec mvim -v --servername VIM_RVG
+#    fi
+# Linux
+# else
 if [ $# != 0 ]; then
-   exec vim --servername VIM --remote-silent "$@"
+   exec /usr/local/bin/vim --servername VIM_RVG --remote-silent "$@"
 else 
-   exec vim --servername VIM 
+   exec /usr/local/bin/vim --servername VIM_RVG
 fi
+# fi
 

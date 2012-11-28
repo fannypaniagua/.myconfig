@@ -58,7 +58,8 @@ set shiftwidth=3
 set softtabstop=3
 set expandtab
 set nolist "set list listchars=tab:\ \ ,trail:·
-" Searching
+
+"Searching
 set hlsearch
 set incsearch
 set ignorecase
@@ -133,7 +134,7 @@ endif
 
 " Yanking also copies to system clipboard
 vnoremap y ygv"+y
-nnoremap yy yy"+yy
+nnoremap yy Vy
 
 " Deleting also copies to system clipboard
 vnoremap d "+ygvd

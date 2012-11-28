@@ -13,15 +13,19 @@ task :update_docs do
    sh "vim -c 'call pathogen#helptags()|q'"
 end
 
-desc "Install All plugins"
+desc "Install vim"
 task :install do
    uname = `uname`.strip
    if uname == "Linux"
-      `sudo apt-get install git ruby1.8 rake vim-gnome`
+      sh "sudo apt-get install git ruby1.8 rake vim-gnome"
    else
-      `brew install git macvim vim mercurial vim`
+      sh "brew install mercurial"
+      sh "sudo ls && hg clone https://vim.googlecode.com/hg/ src && cd src && ./configure --enable-rubyinterp --enable-pythoninterp --with-features=huge --enable-gui=gtk2 && make && sudo make install"
    end
+end
 
+desc "Install plugins"
+task :install_plugins do
    # All the plugins installed as git submodules
    sh "cd ../ && git submodule init"
    sh "cd ../ && git submodule update"
