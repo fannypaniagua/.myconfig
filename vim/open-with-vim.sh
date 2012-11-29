@@ -16,4 +16,3 @@ else
       exec /usr/bin/vim --servername VIM_RVG
    fi
 fi
-
