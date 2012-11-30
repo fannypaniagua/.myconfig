@@ -66,7 +66,7 @@ alias vim='~/.myconfig/vim/open-with-vim.sh'
 alias qq="exit"
 
 # Use 256 colors for tmux
-alias tmux="tmux -2"
+alias tmux="tmux -2 -u attach || tmux -2 -u new"
 
 # Use vim for everything
 export EDITOR=vim
