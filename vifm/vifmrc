@@ -1,4 +1,4 @@
-" vim: filetype=vifm :
+" vim: filetype=vim :
 " Sample configuration file for vifm (last updated: 2 Jun, 2012)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -34,7 +34,7 @@ set followlinks
 " With this option turned on you can run partially entered commands with
 " unambiguous beginning using :! (e.g. :!Te instead of :!Terminal or :!Te<tab>).
 
-set fastrun
+" set fastrun
 
 " Natural sort of (version) numbers within text.
 
@@ -271,8 +271,8 @@ set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
 nmap s :shell<cr>
 nmap S :sort<cr>
 nmap w :view<cr>
-nmap o :!gvim --remote-tab-silent %f<cr>
-nmap O :!gvim %f<cr>
+nmap o :!`~/.myconfig/vim/open-with-vim.sh %f`<cr>
+nmap O :!vim %f<cr>
 
 " Open file in the background using its default program
 nmap gb :file &<cr>l
