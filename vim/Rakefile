@@ -17,7 +17,7 @@ desc "Install vim"
 task :install do
    uname = `uname`.strip
    if uname == "Linux"
-      sh "sudo apt-get install git ruby1.8 rake vim-gnome"
+      sh "sudo apt-get install git ruby1.8 rake vim-gnome curl exuberant-ctags"
    else
       sh "brew install mercurial"
       sh "sudo ls && hg clone https://vim.googlecode.com/hg/ src && cd src && ./configure --enable-rubyinterp --enable-pythoninterp --with-features=huge --enable-gui=gtk2 && make && sudo make install"
