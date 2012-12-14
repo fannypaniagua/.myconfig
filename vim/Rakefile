@@ -6,6 +6,7 @@ task :link do
    `ln -sf ~/.myconfig/vim/gvimrc ~/.gvimrc`
    `ln -sf ~/.myconfig/vim/vimrc ~/.vimrc`    
    `ln -sf ~/.myconfig/vim ~/.vim`    
+   `sudo ln -sf ~/.myconfig/vim/terminal-vim.desktop /usr/share/applications/terminal-vim.desktop`
 end
 
 desc "Update the documentation"

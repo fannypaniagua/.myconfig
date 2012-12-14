@@ -5,4 +5,6 @@ task :link do
 
    `mv -f ~/.vimperatorrc ~/.vimperatorrc.old 2>/dev/null`
    `ln -sf ~/.myconfig/misc/vimperatorrc ~/.vimperatorrc`
+
+   puts "Run ~/.myconfig/misc/xmodmap.sh at login"
 end

@@ -1,8 +1,8 @@
 desc "Install tmux"
 task :install do
-   `sudo apt-add-repository ppa:simono/dev-tools`
-   `sudo apt-get update`
-   `sudo apt-get install tmux`
+   sh "sudo apt-add-repository ppa:simono/dev-tools"
+   sh "sudo apt-get update"
+   sh "sudo apt-get install tmux"
 end
 
 desc "Creates needed symlinks"

@@ -2,4 +2,5 @@ desc "Creates needed symlinks"
 task :link do
    `mv -f ~/.gconf/apps/gnome-terminal  ~/.gconf/apps/gnome-terminal.old 2>/dev/null`
    `ln -sf ~/.myconfig/gnome-terminal  ~/.gconf/apps/gnome-terminal`
+   puts "You need to logout and login again to see changes" 
 end

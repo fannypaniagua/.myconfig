@@ -2,13 +2,13 @@ desc "Install vifm"
 task :install do
    uname = `uname`.strip
    if uname == "Linux"
-      `sudo apt-get install libncursesw5-dev`
-      `wget -c http://prdownloads.sourceforge.net/vifm/vifm-0.7.3a.tar.bz2?download -O vifm.tar.bz2`
-      `mkdir src`
-      `tar -xvjf vifm.tar.bz2 -C src --strip-components=1`
-      `cd src && ./configure && make && sudo make install`
-      `rm vifm.tar.bz2`
-      `rm -rf src`
+      sh "sudo apt-get install libncursesw5-dev"
+      sh "wget -c http://prdownloads.sourceforge.net/vifm/vifm-0.7.3a.tar.bz2?download -O vifm.tar.bz2"
+      sh "mkdir src"
+      sh "tar -xvjf vifm.tar.bz2 -C src --strip-components=1"
+      sh "cd src && ./configure && make && sudo make install"
+      sh "rm vifm.tar.bz2"
+      sh "rm -rf src"
    else
       `brew update`
       `brew install vifm`
