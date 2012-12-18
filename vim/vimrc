@@ -12,7 +12,6 @@ let os = substitute(system('uname'), "\n", "", "")
 " Use pathogen to manage plugins
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
-
 set nocompatible
 set nonumber
 set ruler
@@ -162,8 +161,8 @@ map <Leader>z :GundoToggle<CR>
 " Nerd tree 
 map <Leader>n :NERDTreeToggle<CR>
 
-" w!! writes a file as sudo
-cmap w!! w !sudo tee >/dev/null %
+" ww writes a file as sudo
+cmap ww w !sudo tee >/dev/null %
 
 " Ctrl+v is normally visual block mode, change to Leader+v
 noremap <Leader>v <C-v>
