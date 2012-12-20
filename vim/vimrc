@@ -158,14 +158,17 @@ let g:HammerBrowser = 'google-chrome'
 " Leader z for undo history
 map <Leader>z :GundoToggle<CR>
 
-" Nerd tree 
-map <Leader>n :NERDTreeToggle<CR>
-
 " ww writes a file as sudo
 cmap ww w !sudo tee >/dev/null %
 
 " Ctrl+v is normally visual block mode, change to Leader+v
 noremap <Leader>v <C-v>
+
+" Buffer navigation
+map <Leader>n :bn<CR>
+map <Leader>b :bp<CR>
+map <Leader>d :bd<CR>
+
 
 " Resize windows
 map ) <C-W>>
@@ -256,10 +259,10 @@ command! S4 call SplitFour()
 cmap s4 S4<CR>
 
 " Creates a banner with comments
-autocmd FileType vim map <Leader>b I"<Del>  <esc>A  "<Del><esc>yyp0lv$hhr=yykPjj
+autocmd FileType vim map <Leader>c I"<Del>  <esc>A  "<Del><esc>yyp0lv$hhr=yykPjj
 autocmd FileType javascript,php,c,cpp map <Leader>b I//  <esc>A  //<esc>yyp0llv$hhhr=yykPjj
 autocmd FileType python,ruby,sh,zsh map <Leader>b I#  <esc>A  #<esc>yyp0lv$hhr=yykPjj
-autocmd FileType css map <Leader>b I/*  <esc>A  */<esc>yyp0llv$r=$hc$*/<esc>yykPjj
+autocmd FileType css map <Leader>c I/*  <esc>A  */<esc>yyp0llv$r=$hc$*/<esc>yykPjj
 
 " Generates Wordpress-friendly html from a markdown file
 " TODO: Fix this, take a look at Hammer plugin, might be useful
