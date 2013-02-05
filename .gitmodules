@@ -118,3 +118,6 @@
 [submodule "vim/bundle/vimcolorschemes.vim"]
 	path = vim/bundle/vimcolorschemes.vim
 	url = https://github.com/flazz/vim-colorschemes
+[submodule "vim/bundle/vim-jade"]
+	path = vim/bundle/vim-jade
+	url = git://github.com/digitaltoad/vim-jade.git

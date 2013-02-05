@@ -114,6 +114,9 @@ elseif os == "Linux"
    endif
 endif
 
+" Detect file changes
+set autoread
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Key mappings
@@ -216,6 +219,8 @@ autocmd BufRead,BufNewFile *.markdown,*.md setlocal sw=4 sts=4 et
 " coffee files need 2 spaces for indent size
 autocmd BufRead,BufNewFile *.coffee setlocal sw=2 sts=2 et
 
+" jade files need 2 spaces for indent size
+autocmd BufRead,BufNewFile *.jade setlocal sw=2 sts=2 et
 
 
 
