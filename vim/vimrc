@@ -153,7 +153,7 @@ map <Leader>rt :UpdateTags *<CR>
 map <Leader>st :TagbarToggle<CR>
 
 " Jump to companion file (*.cpp to *.hpp and so on)
-map <Leader>Up :FSHere<CR>
+map <Leader>c :FSHere<CR>
 
 " Open markup previews in chromium
 let g:HammerBrowser = 'google-chrome'
