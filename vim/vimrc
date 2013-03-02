@@ -150,6 +150,7 @@ let mapleader=","
 
 " Leader r for redo
 map <Leader>r :redo<CR>
+map <C-r> <nop>
 
 " Leader F for Ack
 map <Leader>f :Ack<space>-ai<space>
